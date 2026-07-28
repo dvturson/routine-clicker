@@ -6,9 +6,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Calendar</title>
+    <style>
+        #square {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(255, 255, 255);
+            margin: 20px auto;
+            border: 2px solid rgb(144, 47, 47);
+        }
+
+        button {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-
     <div class="calendar">
         <div class="header">
             <button id="prevBtn">
@@ -29,8 +45,23 @@
             <div class="day">Sun</div>
         </div>
         <div class="dates" id="dates"></div>
+                <button id=""></button>
     </div>
+        <div id="square"></div>
 
+    <button onclick="changeColor()">Change Color</button>
+
+    <script>
+        function changeColor() {
+            const square = document.getElementById("square");
+
+            if (square.style.backgroundColor === "red") {
+                square.style.backgroundColor = "blue";
+            } else {
+                square.style.backgroundColor = "red";
+            }
+        }
+    </script>
     <script src="main.js"></script>
 </body>
 </html>
