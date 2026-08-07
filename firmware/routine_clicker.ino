@@ -23,7 +23,7 @@ void setup() {
   Serial.println("\nConnected to WiFi");
 
   config.database_url = DATABASE_URL;
-  config.signer.test_mode = true;
+  config.signer.tokens.legacy_token = DB_SECRET;
   Firebase.begin(&config, &auth);
   Firebase.reconnectWiFi(true);
 }
