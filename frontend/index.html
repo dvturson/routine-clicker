@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,6 +25,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- <div class="calendar">
         <div class="header">
@@ -47,21 +49,29 @@
         <div class="dates" id="dates"></div>
                 <button id=""></button>
     </div> -->
-        <div id="square"></div>
+    <div id="square"></div>
 
-    <button onclick="changeColor()">Change Color</button>
+    <button>Change Color</button>
 
-    <script>
-        function changeColor() {
-            const square = document.getElementById("square");
+    <script type="module">
+        import { db, ref, set, onValue } from './firebase.js';
 
-            if (square.style.backgroundColor === "green") {
-                square.style.backgroundColor = "white";
-            } else {
-                square.style.backgroundColor = "green";
-            }
-        }
+        const square = document.getElementById('square');
+        const btn = document.querySelector('button');
+
+        // when firebase has a change, it is updated here
+        onValue(ref(db, 'checkin/status'), (snapshot) => {
+            const isGreen = snapshot.val();
+            square.style.backgroundColor = isGreen ? 'green' : 'white';
+        });
+
+        // when button click, write to firebase
+        btn.addEventListener('click', () => {
+            const isGreen = square.style.backgroundColor === 'green';
+            set(ref(db, 'checkin/status'), !isGreen);
+        });
     </script>
-    <script src="main.js"></script>
+
 </body>
+
 </html>
