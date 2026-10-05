@@ -51,13 +51,13 @@ void loop() {
     String path = "/checkin/days/" + getToday() + "/gym";
     
     // reads what the current value is
-    if (Firebase.RTDB.setBool(&fbdo, path)) {
+    if (Firebase.RTDB.getBool(&fbdo, path)) {
       bool current = fbdo.boolData();
 
       // toggle depending on value status
-      if (Firebase.RTDB.setBool(&fbdo, path !current)) {
+      if (Firebase.RTDB.setBool(&fbdo, path, !current)) {
 
-        Serial.println(current ? "Checked out" + path : "Checked in: " + path);
+        Serial.println(current ? "Checked out: " + path : "Checked in: " + path);
       } else {
         Serial.println("Failed: " + fbdo.errorReason());
       }
