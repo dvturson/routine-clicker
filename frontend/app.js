@@ -47,7 +47,8 @@ function buildCalendar() {
                 cell.className = 'day-cell empty';
             } else {
                 cell.className = 'day-cell';
-                if (checkedDays[dateStr]) cell.classList.add('checked');
+                const dayData = checkedDays[dateStr];
+                if (dayData && Object.values(dayData).some(v => v === true)) cell.classList.add('checked');
                 if (isToday(current)) cell.classList.add('today');
                 cell.dataset.date = dateStr;
                 cell.title = dateStr;
@@ -85,17 +86,11 @@ function buildCalendar() {
 
 // toggle a specific day in firebase
 function toggleDay(dateStr) {
-    const dayData = checkedDays[datateStr];
+    const dayData = checkedDays[dateStr];
 
     // check day as "checked" if true
     const isChecked = dayData && Object.values(dayData).some(v => v === true);
-
-    // toggle all activities for the day
-    if (isChecked) {
-        set(ref(db, `checkin/days/${dateStr}`), null);
-    } else {
-        set(ref(db, `checkin/days/${dateStr}/gym`), true);
-    }
+    set(ref(db, `checkin/days/${dateStr}/gym`), isChecked);
 }
 
 // check in today

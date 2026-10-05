@@ -56,10 +56,7 @@ void loop() {
 
       // toggle depending on value status
       if (Firebase.RTDB.setBool(&fbdo, path, !current)) {
-
         Serial.println(current ? "Checked out: " + path : "Checked in: " + path);
-      } else {
-        Serial.println("Failed: " + fbdo.errorReason());
       }
     } else {
       // if path dont exist, will set to true
