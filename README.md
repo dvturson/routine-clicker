@@ -1,6 +1,6 @@
 # Routine Clicker
 
-A habit tracking system that bridges physical hardware and a real time web dashboard. 
+A physical check in system that bridges physical hardware and a real time web dashboard. Press a button, your web calendar updates in real time. 
 
 ---
 
@@ -17,7 +17,7 @@ Button press → ESP32 firmware → Firebase Database → Web / OLED dashboard
 ## Features
 
 - GitHub-style heatmap calendar showing the full year
-<!-- - Multiple activity tracking — add and remove activities (gym, reading, biking, etc.) from the web UI -->
+
 - Physical button check-in via ESP32 hardware device
 - SSD1306 OLED display on the device showing current activity and a hold-to-commit progress bar
 - Single click cycles through activities; hold commits the current one
@@ -41,10 +41,10 @@ Button press → ESP32 firmware → Firebase Database → Web / OLED dashboard
 ```
 routine-clicker/
 ├── frontend/
-│   ├── index.html       # dashboard UI
-│   ├── style.css        # minimalist black/white styling
-│   ├── app.js           # calendar logic, Firebase listeners
-│   └── firebase.js      # Firebase config and exports
+│   ├── index.html            # dashboard UI
+│   ├── style.css             # minimalist black/white styling
+│   ├── app.js                # calendar logic, Firebase listeners
+│   └── firebase.example.js   # Firebase config and exports
 ├── firmware/
 │   └── routine_clicker/
 │       ├── routine_clicker.ino   # ESP32 firmware
@@ -57,5 +57,5 @@ routine-clicker/
 
 ## Built By
 
-- [Devran Turson](https://github.com/dvturson) — full stack, OLED display, project lead
-- [Jean-Luke Orellana](https://github.com/jeanlukeorlla) — hardware, ESP32 firmware
+- [Devran Turson](https://github.com/dvturson) — full stack, OLED display
+- [Jean-Luke Orellana](https://github.com/jeanlukeorlla) — hardware wiring, ESP32 setup
