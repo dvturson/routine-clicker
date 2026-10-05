@@ -49,10 +49,23 @@ void loop() {
 
   if (Firebase.ready() && digitalRead(BUTTON_PIN) == LOW) {
     String path = "/checkin/days/" + getToday() + "/gym";
-    if (Firebase.RTDB.setBool(&fbdo, path, true)) {
-      Serial.println("Checked in: " + path);
+    
+    // reads what the current value is
+    if (Firebase.RTDB.setBool(&fbdo, path)) {
+      bool current = fbdo.boolData();
+
+      // toggle depending on value status
+      if (Firebase.RTDB.setBool(&fbdo, path !current)) {
+
+        Serial.println(current ? "Checked out" + path : "Checked in: " + path);
+      } else {
+        Serial.println("Failed: " + fbdo.errorReason());
+      }
     } else {
-      Serial.println("Failed: " + fbdo.errorReason());
+      // if path dont exist, will set to true
+      if (Firebase.RTDB.setBool(&fbdo, path, true)) {
+        Serial.println("Checked in: " + path);
+      }
     }
     delay(300);
   }
