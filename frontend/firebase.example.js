@@ -7,7 +7,7 @@ import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebase
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAE-1yZTX2-MqT83UXQIELnMGRu969sE_I", // OLD KEY
+  apiKey: "YOUR_API_KEY_HERE", 
   authDomain: "routine-clicker.firebaseapp.com",
   databaseURL: "https://routine-clicker-default-rtdb.firebaseio.com",
   projectId: "routine-clicker",
