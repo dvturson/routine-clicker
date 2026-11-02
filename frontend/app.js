@@ -21,7 +21,6 @@ function isToday(date) {
 function buildCalendar() {
     weeksEl.innerHTML = '';
     monthLabelsEl.innerHTML = '';
-    console.log('building calendar, year:', year);
 
     const startDate = new Date(year, 0, 1);
     const endDate = new Date(year, 11, 31);
@@ -68,7 +67,6 @@ function buildCalendar() {
 
         weeksEl.appendChild(weekEl);
         weekIndex++;
-        console.log('weeks built:', weekIndex);
     }
 
     // build month labels
@@ -90,7 +88,7 @@ function toggleDay(dateStr) {
 
     // check day as "checked" if true
     const isChecked = dayData && Object.values(dayData).some(v => v === true);
-    set(ref(db, `checkin/days/${dateStr}/gym`), isChecked);
+    set(ref(db, `checkin/days/${dateStr}/gym`), !isChecked);
 }
 
 // check in today
